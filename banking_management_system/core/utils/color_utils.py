@@ -1,10 +1,6 @@
-
+# core/utils/color_utils.py
 class Color:
-    """ANSI color codes for beautiful console output."""
-
     RESET = "\033[0m"
-
-    # Text colors
     RED = "\033[91m"
     GREEN = "\033[92m"
     YELLOW = "\033[93m"
@@ -13,17 +9,17 @@ class Color:
     WHITE = "\033[97m"
     BRIGHT_MAGENTA = "\033[95m"
     ORANGE = "\033[38;5;214m"
-
-    # Styles
     BOLD = "\033[1m"
     UNDERLINE = "\033[4m"
 
-def colorText(text, color):
+
+def color_text(text: str, color: str) -> str:
     return f"{color}{text}{Color.RESET}"
 
 
-if __name__=="__main__":
-    print(colorText("name is just a name", Color.RED+Color.BOLD))
-
-
-
+if __name__ == "__main__":
+    print(color_text("name is just a name", Color.RED + Color.BOLD))
+    print(color_text("name is just a name", Color.GREEN + Color.BOLD))
+    print(color_text("name is just a name", Color.YELLOW + Color.BOLD))
+    print(color_text("name is just a name", Color.BLUE + Color.BOLD))
+    print(color_text("name is just a name", Color.CYAN + Color.BOLD))
