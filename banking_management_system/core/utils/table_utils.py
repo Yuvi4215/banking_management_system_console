@@ -4,7 +4,7 @@ from core.utils.color_utils import color_text, Color
 # from color_utils import color_text, Color
 
 def create_table(
-    headers, rows, title=None, resolution=100, indentation=50, colorize=True
+    headers, rows, title=None, resolution=100, indentation=70, colorize=True
 ):
     table = PrettyTable()
     if colorize:
@@ -28,7 +28,7 @@ def create_table(
 
     if title:
         print(
-            " " * int(indentation * 1.3)
+            " " * int(indentation * 1.2)
             + color_text(f"📋 {title}\n", Color.BOLD + Color.YELLOW)
         )
 

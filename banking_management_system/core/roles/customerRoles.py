@@ -24,21 +24,50 @@ class CustomerRole:
 
     def start(self):
         """Main customer interaction loop"""
-        while True:
+        flag,attempt=True,0
+        while flag:
             self.show_menu()
             choice = input("\n👉 Enter choice: ").strip()
-
             if choice == "1":
+                print("Choice- 1")
                 self.view_profile()
-            elif choice == "2":
-                self.transfer_money()
-            elif choice == "3":
-                self.view_transaction_history()
-            elif choice == "4":
-                # color_utils.print_info("👋 Logging out...")
-                break
-            else:
                 pass
+            elif choice == "2":
+                print("Choice- 2")
+                self.transfer_money()
+                pass
+            elif choice == "3":
+                print("Choice- 3")
+                self.view_transaction_history()
+                pass
+            elif choice == "4":
+                print("Logging out")
+                flag = False
+            else:
+                attempt += 1
+                print("❌ Invalid option. Try again.")
+                print(f"Attempt number : {attempt} failed")
+            if attempt > 2:
+                flag = False
+
+
+
+
+        # while True:
+        #     self.show_menu()
+        #     choice = input("\n👉 Enter choice: ").strip()
+
+        #     if choice == "1":
+        #         self.view_profile()
+        #     elif choice == "2":
+        #         self.transfer_money()
+        #     elif choice == "3":
+        #         self.view_transaction_history()
+        #     elif choice == "4":
+        #         # color_utils.print_info("👋 Logging out...")
+        #         break
+        #     else:
+        #         pass
                 # color_utils.print_error("❌ Invalid choice, try again.")
 
     # ----------------------------------------------------------
@@ -46,12 +75,14 @@ class CustomerRole:
     # ----------------------------------------------------------
 
     def view_profile(self):
+        print("view_profile(self)")
         pass
         # color_utils.print_header("👤 Your Account Details")
         # details = self.account_service.get_account_details(self.customer)
         # format_utils.print_table(details)
 
     def transfer_money(self):
+        print("transfer_money(self)")
         pass
         # color_utils.print_header("💸 Transfer Money")
         # target_user = input("Enter recipient username: ").strip()
@@ -68,6 +99,7 @@ class CustomerRole:
         #     color_utils.print_error(f"⚠️ {e}")
 
     def view_transaction_history(self):
+        print("view_transaction_history(self)")
         pass
         # color_utils.print_header("🧾 Transaction History")
         # transactions = self.transaction_service.get_user_transactions(self.customer)
