@@ -1,12 +1,11 @@
-# core/services/account_service.py
-import uuid
-import random
-
-
-
-
-account_no = str(uuid.uuid4())[:8]  # simple unique ID
-print(account_no)
-account_no=random.randint(1111111,9999999)
-print(account_no)
-
+data_dict = {
+    "51e058f8": {
+        "username": "Sunny",
+        "password": "password",
+        "role": "CUSTOMER",
+        "account_no": 2003963,
+        "balance": 1000,
+    }
+}
+data=data_dict["51e058f8"]["role"]
+print(data)

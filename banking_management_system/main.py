@@ -6,7 +6,7 @@ from core.roles.customerRoles import CustomerRole
 
 
 def main_menu():
-    clear_screen()
+    # clear_screen()
     print("=== 🏦 Banking Management System ===")
     print("1️⃣  Customer Login")
     print("2️⃣  Cashier Login")

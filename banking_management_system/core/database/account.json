@@ -1,13 +1,13 @@
 {
     "eaa99349": {
-        "username": "Ajay",
+        "username": "ajay",
         "password": "pass123",
         "role": "CUSTOMER",
         "account_no": 8187047,
         "balance": 1000
     },
     "51e058f8": {
-        "username": "Sunny",
+        "username": "sunny",
         "password": "password",
         "role": "CUSTOMER",
         "account_no": 2003963,

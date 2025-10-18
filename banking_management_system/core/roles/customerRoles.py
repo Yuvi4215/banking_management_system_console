@@ -7,6 +7,7 @@
 
 
 class CustomerRole:
+    
     def __init__(self, customer):
         """
         customer: an instance of core.models.customer_model.Customer
@@ -16,6 +17,7 @@ class CustomerRole:
         # self.account_service = AccountService()
 
     def show_menu(self):
+        # print(f"💰 Customer: {self.customer.get_username()} Dashboard")
         print("💰 Customer Dashboard")
         print("1️⃣  View Account Details")
         print("2️⃣  Transfer Money")
@@ -76,6 +78,7 @@ class CustomerRole:
 
     def view_profile(self):
         print("view_profile(self)")
+        
         pass
         # color_utils.print_header("👤 Your Account Details")
         # details = self.account_service.get_account_details(self.customer)

@@ -1,5 +1,5 @@
 # core/database/file_manager.py
-import json,os
+import json, os
 
 
 class FileManager:
@@ -26,6 +26,10 @@ class FileManager:
         # print("in file manager- read all", self.file_path)
         with open(self.file_path, "r") as fp:
             return json.load(fp)
+    
+    def getCustomer(self, encrypted_id):
+        data=self.read_all()
+        return data[encrypted_id]
 
     def add_record(self, record: dict):
         """Merge a new record (dict) into the existing JSON dict."""
@@ -33,3 +37,21 @@ class FileManager:
         data.update(record)  # Merge
         with open(self.file_path, "w") as fp:
             json.dump(data, fp, indent=4)
+
+    def getEmployee(self, username):
+        data = self.read_all()
+
+        # Manager
+        if username.lower() == "manager" and "manager" in data:
+            print(data["manager"])
+            return data["manager"]
+
+        # Cashiers
+        cashiers = data.get("cashier", [])
+        for cashier in cashiers:
+            if cashier.get("username") == username:
+                print(cashier)
+                return cashier  # return the dict, not a list
+
+        return None
+

@@ -1,8 +1,8 @@
-# from core.models.user import User
-# from core.models.customer_model import Customer
+from core.models.user import User
+from core.models.customer_model import Customer
 
-from user import User
-from customer_model import Customer
+# from user import User
+# from customer_model import Customer
 
 class Cashier(User):
     """

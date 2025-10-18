@@ -1,0 +1,22 @@
+{
+    "manager": {
+        "username": "manager",
+        "password": "Admin",
+        "email": "ajay@example.com",
+        "phone": "+91-9999999999"
+    },
+    "cashier": [
+        {
+            "username": "sunny",
+            "password": "cash"
+        },
+        {
+            "username": "vaibhav",
+            "password": "cash"
+        },
+        {
+            "username": "deepak",
+            "password": "cash"
+        }
+    ]
+}
