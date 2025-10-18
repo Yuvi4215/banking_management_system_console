@@ -1,8 +1,12 @@
-# from core.utils.console_utils import clearScreen
+from core.utils.console_utils import clear_screen,get_input
+from core.authentication.login_manager import LoginManager
+from core.roles.accountManagerRole import AccountManagerRole
+from core.roles.cashierRoles import CashierRole
+from core.roles.customerRoles import CustomerRole
 
 
 def main_menu():
-    # clearScreen()
+    clear_screen()
     print("=== 🏦 Banking Management System ===")
     print("1️⃣  Customer Login")
     print("2️⃣  Cashier Login")
@@ -11,19 +15,23 @@ def main_menu():
 
 
 def main():
+    login_manager = LoginManager()
     flag, attempt = True, 0
     while flag:
         main_menu()
         choice = input("\nSelect an option: ").strip()
         if choice == "1":
-            print("Choice- 1")
-            pass
+            user = login_manager.login("customer")
+            if user:
+                CustomerRole(user).start()
         elif choice == "2":
-            print("Choice- 2")
-            pass
+            user = login_manager.login("cashier")
+            if user:
+                CashierRole(user).start()
         elif choice == "3":
-            print("Choice- 3")
-            pass
+            user = login_manager.login("manager")
+            if user:
+                AccountManagerRole(user).start()
         elif choice == "0":
             print("Logging out")
             flag = False
@@ -31,6 +39,7 @@ def main():
             attempt += 1
             print("❌ Invalid option. Try again.")
             print(f"Attempt number : {attempt} failed")
+            get_input("Press Enter",False)
         if attempt > 2:
             flag = False
     print("Program terminated....")

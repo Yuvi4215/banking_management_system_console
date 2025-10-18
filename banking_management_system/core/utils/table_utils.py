@@ -1,10 +1,10 @@
 # core/utils/table_utils.py
 from prettytable import PrettyTable
-from core.utils.color_utils import color_text, Color
+from core.utils.color_utils import color_text,Color
 # from color_utils import color_text, Color
 
 def create_table(
-    headers, rows, title=None, resolution=100, indentation=70, colorize=True
+    headers, rows, title=None, resolution=100, indentation=30, colorize=True
 ):
     table = PrettyTable()
     if colorize:
@@ -37,10 +37,10 @@ def create_table(
 
 
 if __name__ == "__main__":
-    headers = ["Account No", "Name", "Balance (₹)"]
-    rows = [
-        ["1001", "Thor", "5000"],
-        ["1002", "Ironman", "3200"],
-        ["1003", "Ninja", "8700"],
-    ]
+    headers = ["Username", "Full Name", "Email", "Phone", "Address", "Account No"]
+    dic = {'eaa99349': {'username': 'Ajay', 'full_name': 'Ajay Varma', 'email': 'ajay@example.com', 'phone': '+91-9999999999', 'address': '123 MG Road, Bangalore', 'account_no': 8187047}, '51e058f8': {'username': 'Sunny', 'full_name': 'Sunny Varma', 'email': 'sunny@example.com', 'phone': '+91-9988776655', 'address': '5 Fc Road, Pune', 'account_no': 2003963}, 'fdaa6e94': {'username': 'admin', 'full_name': 'Add min', 'email': 'add@min.com', 'phone': '9988776655', 'address': 'add Road, min', 'account_no': 9145179}}
+    rows=[]
+    for ele in dic.values():
+        rows.append(ele.values())
+    # print()
     create_table(headers, rows, title="Customer Accounts")

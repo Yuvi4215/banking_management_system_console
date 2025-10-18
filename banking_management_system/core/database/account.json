@@ -1,0 +1,30 @@
+{
+    "eaa99349": {
+        "username": "Ajay",
+        "password": "pass123",
+        "role": "CUSTOMER",
+        "account_no": 8187047,
+        "balance": 1000
+    },
+    "51e058f8": {
+        "username": "Sunny",
+        "password": "password",
+        "role": "CUSTOMER",
+        "account_no": 2003963,
+        "balance": 1000
+    },
+    "fdaa6e94": {
+        "username": "admin",
+        "password": "123",
+        "role": "CUSTOMER",
+        "account_no": 9145179,
+        "balance": 169.0
+    },
+    "b8222fb9": {
+        "username": "user",
+        "password": "142",
+        "role": "CUSTOMER",
+        "account_no": 9455827,
+        "balance": 69.0
+    }
+}

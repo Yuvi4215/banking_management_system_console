@@ -1,15 +1,16 @@
 # from core.utils import color_utils, emoji_utils, format_utils
-# from core.services.account_service import AccountService
+from core.utils.table_utils import create_table
+from core.services.account_service import AccountService
 
 
 class AccountManagerRole:
-    def __init__(self):
-    # def __init__(self, manager):
+
+    def __init__(self, manager):
         """
         manager: instance of core.models.account_manager_model.AccountManager
         """
-        # self.manager = manager
-        # self.account_service = AccountService()
+        self.manager = manager
+        self.accountService = AccountService()
 
     def show_menu(self):
         print("🧾 Account Manager Dashboard")
@@ -51,6 +52,29 @@ class AccountManagerRole:
 
     def create_account(self):
         print("create_account(self)")
+        # create_account(username, password, full_name, email, phone, address, balance=0.0):
+        username = input("Enter Username: ").strip()
+        password = input("Enter Password: ").strip()
+        full_name=input("Enter Full Name: ").strip()
+        email= input("Enter Email ID: ").strip()
+        phone= input("Enter Phone Number: ").strip()
+        address=input("Enter Address: ").strip()
+        balance = input("Enter initial balance: ").strip()
+        try:
+            balance= float(balance)
+            # accountService=AccountService()
+            newAccount=self.accountService.create_account(username,password,full_name,email, phone,address,balance)
+            print(f"✅ Account created for {username}")
+            print(f"Account number :: {newAccount.account_no}")
+        except ValueError:
+            print("❌ Invalid balance entered.")
+        except Exception as e:
+            print(f"⚠️ {e}")      
+        
+        
+        
+        
+        
         # color_utils.print_header("🧩 Create New Customer Account")
         # username = input("Enter username: ").strip()
         # password = input("Enter password: ").strip()
@@ -68,23 +92,36 @@ class AccountManagerRole:
 
     def view_customers(self):
         print("view_customers(self)")
-        # color_utils.print_header("📋 Customer List")
-        # customers = self.account_service.get_all_customers()
-        # format_utils.print_table(customers)
-        pass
+        
+        headers = ["ID", "Username", "Full Name", "Email", "Phone", "Address", "Account No"]
+        
+        customers = self.accountService.getAllCustomers()
+        
+        # Convert dictionary into list of rows in one line
+        rows = [[customer_id, *details.values()] for customer_id, details in customers.items()]
+        
+        # Call your table creation function
+        create_table(headers, rows, "List of all customers.", 70, 30)
+
+
 
     def delete_account(self):
         print("delete_account(self)")
         # color_utils.print_header("🗑️ Delete Customer Account")
-        # username = input("Enter username to delete: ").strip()
-        # confirm = input(f"Are you sure you want to delete '{username}'? (y/n): ").strip().lower()
+        account_no = input("Enter Account Number: ").strip()
+        confirm = input(f"Are you sure you want to delete '{account_no}'? (y/n): ").strip().lower()
+        
+            
 
-        # if confirm == "y":
-        #     self.account_service.delete_customer(username)
-        #     color_utils.print_success(f"🗑️ Account '{username}' deleted.")
-        # else:
-        #     color_utils.print_info("✅ Deletion canceled.")
-        pass
+        if confirm == "y":
+            print(f"🗑️ Account '{account_no}' delete operation started.")
+            if self.accountService.isPresent(account_no):
+                self.accountService.deleteCustomer(account_no)
+            else:
+               print(f"❌ There is no account with this number : {account_no}.") 
+        else:
+            print("✅ Deletion canceled.")
+        
 
 if __name__=="__main__":
     am1=AccountManagerRole()
