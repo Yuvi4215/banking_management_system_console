@@ -21,9 +21,10 @@ def main():
         main_menu()
         choice = input("\nSelect an option: ").strip()
         if choice == "1":
-            user = login_manager.login("customer")
+            user,encrypted_id = login_manager.login("customer")
             if user:
-                CustomerRole(user).start()
+                # print(user.get_role())
+                CustomerRole(user,encrypted_id).start()
         elif choice == "2":
             user = login_manager.login("cashier")
             if user:

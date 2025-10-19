@@ -4,7 +4,7 @@
 
 
 class CashierRole:
-    # def __init__(self):
+    
     def __init__(self, cashier):
         # """
         # cashier: instance of core.models.cashier_model.Cashier

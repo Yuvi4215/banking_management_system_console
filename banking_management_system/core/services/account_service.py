@@ -82,11 +82,17 @@ class AccountService:
         pass
 
     def isPresent(self, account_no):
-        data_dict=self.getIdentifiers()
-        acc_list=[details['account_no'] for details in data_dict.values()]
-        if account_no in acc_list:
-            return True
-        return False
+        data_dict=self.identifier_db.read_all()
+        for key,value in data_dict.items():
+            if value["account_no"]==account_no:
+                return key
+        return None
+
+        # data_dict=self.getIdentifiers()
+        # acc_list=[details['account_no'] for details in data_dict.values()]
+        # if account_no in acc_list:
+        #     return True
+        # return False
 
 
 

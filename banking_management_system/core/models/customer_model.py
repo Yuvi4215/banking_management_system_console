@@ -15,6 +15,9 @@ class Customer(User):
         self.__balance = balance  # Private attribute
 
     # --- Encapsulation for balance ---
+    def get_username(self):
+        return super().get_username()
+    
     def get_balance(self):
         return self.__balance
     

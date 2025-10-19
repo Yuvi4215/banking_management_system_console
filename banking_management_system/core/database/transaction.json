@@ -3,14 +3,22 @@
         {
             "type": "DEPOSIT",
             "amount": 1000,
-            "date": "18-Oct-2025 12:53:34"
+            "date": "18-Oct-2025 12:53:34",
+            "remark": "Account Opening Amount"
+        },
+        {
+            "type": "TRANSFER SENT",
+            "amount": 12.0,
+            "date": "19-Oct-2025 12:22:18",
+            "remark": "To user (b8222fb9)"
         }
     ],
     "51e058f8": [
         {
             "type": "DEPOSIT",
             "amount": 1000,
-            "date": "18-Oct-2025 12:56:33"
+            "date": "18-Oct-2025 12:56:33",
+            "remark": "Account Opening Amount"
         }
     ],
     "fdaa6e94": [
@@ -27,6 +35,12 @@
             "amount": 69.0,
             "date": "18-Oct-2025 14:50:46",
             "remark": "Account Opening Amount"
+        },
+        {
+            "type": "TRANSFER RECEIVED",
+            "amount": 12.0,
+            "date": "19-Oct-2025 12:22:18",
+            "remark": "From ajay (eaa99349)"
         }
     ]
 }
