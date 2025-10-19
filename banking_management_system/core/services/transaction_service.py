@@ -8,6 +8,15 @@ class TransactionService:
     ACCOUNT_FILE = "banking_management_system/core/database/account.json"
     TRANSACTION_FILE = "banking_management_system/core/database/transaction.json"
 
+    def _find_user_id_by_account(self, account_no):
+        """Helper: find the encrypted user ID using account number."""
+        accounts = self._load_data(self.ACCOUNT_FILE)
+        for user_id, details in accounts.items():
+            if details["account_no"] == account_no:
+                return user_id
+        return None
+
+
     def _load_data(self, file_path):
         if not os.path.exists(file_path):
             return {}
@@ -129,3 +138,131 @@ class TransactionService:
         # Join all transactions nicely
         result = "\n".join(result_lines)
         return result
+    
+    def get_all_transactions(self, encrypted_id=None):
+
+        """View all or specific account transactions."""
+        data_dict = self._load_data(self.TRANSACTION_FILE)
+
+        # 🧩 If specific account requested
+        if encrypted_id:
+            if encrypted_id not in data_dict:
+                return "No transactions found for this User"
+            # Transactions for a specific account
+            transactions = {encrypted_id: data_dict[encrypted_id]}
+        else:
+            # 🧩 Combine all transactions across accounts
+            transactions = data_dict
+
+        # 🧩 If still empty
+        if not transactions:
+            return "No transactions found."
+
+        # 🧾 Build formatted output
+        result_lines = []
+        for enc_id, txns in transactions.items():
+            for txn in txns:
+                result_lines.append(
+                    f'''\t"encrypted id" : {enc_id},
+    \t"Type": {txn.get("type", "N/A")}
+    \t"Amount": {txn.get("amount", "0")}
+    \t"Date": {txn.get("date", "Unknown")}
+    \t"Remark": {txn.get("remark", "No remark")},\n'''
+                )
+
+        # Join all transactions nicely
+        result = "\n".join(result_lines)
+        return result
+    
+
+    def deposit_by_account(self, cashier_id, account_no, amount):
+        """Deposit money into a customer's account using account number."""
+        accounts = self._load_data(self.ACCOUNT_FILE)
+        transactions = self._load_data(self.TRANSACTION_FILE)
+
+        # Find customer ID (encrypted_id) by account number
+        customer_id = None
+        for enc_id, data in accounts.items():
+            if data["account_no"] == account_no:
+                customer_id = enc_id
+                break
+
+        if not customer_id:
+            return f"❌ Account number {account_no} not found."
+
+        customer = self._load_customer(customer_id)
+
+        try:
+            amount = float(amount)
+        except ValueError:
+            return "❌ Invalid amount entered."
+
+        if amount <= 0:
+            return "⚠️ Deposit amount must be greater than 0."
+
+        # --- Perform deposit ---
+        customer.deposit(amount)
+        self._save_customer(customer_id, customer)
+
+        # --- Record transaction ---
+        txn = {
+            "type": "DEPOSIT",
+            "amount": amount,
+            "date": get_timestamp(),
+            "remark": f"Deposited by cashier: {cashier_id}",
+        }
+        transactions.setdefault(customer_id, []).append(txn)
+        self._save_data(self.TRANSACTION_FILE, transactions)
+
+        return (
+            f"✅ ₹{amount:.2f} deposited successfully into A/C {account_no}.\n"
+            f"New balance: ₹{customer.get_balance():.2f}"
+        )
+
+    # -----------------------------------------------------------------
+
+    def withdraw_by_account(self, cashier_id, account_no, amount):
+        """Withdraw money from a customer's account using account number."""
+        accounts = self._load_data(self.ACCOUNT_FILE)
+        transactions = self._load_data(self.TRANSACTION_FILE)
+
+        # Find customer ID (encrypted_id) by account number
+        customer_id = None
+        for enc_id, data in accounts.items():
+            if data["account_no"] == account_no:
+                customer_id = enc_id
+                break
+
+        if not customer_id:
+            return f"❌ Account number {account_no} not found."
+
+        customer = self._load_customer(customer_id)
+
+        try:
+            amount = float(amount)
+        except ValueError:
+            return "❌ Invalid amount entered."
+
+        if amount <= 0:
+            return "⚠️ Withdrawal amount must be greater than 0."
+
+        # --- Perform withdrawal ---
+        if not customer.withdraw(amount):
+            return f"❌ Insufficient balance. Current balance: ₹{customer.get_balance():.2f}"
+
+        self._save_customer(customer_id, customer)
+
+        # --- Record transaction ---
+        txn = {
+            "type": "WITHDRAWAL",
+            "amount": amount,
+            "date": get_timestamp(),
+            "remark": f"Withdrawn by cashier: {cashier_id}",
+        }
+        transactions.setdefault(customer_id, []).append(txn)
+        self._save_data(self.TRANSACTION_FILE, transactions)
+
+        return (
+            f"✅ ₹{amount:.2f} withdrawn successfully from A/C {account_no}.\n"
+            f"Remaining balance: ₹{customer.get_balance():.2f}"
+        )

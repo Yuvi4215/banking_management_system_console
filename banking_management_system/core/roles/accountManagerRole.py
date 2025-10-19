@@ -5,11 +5,12 @@ from core.services.account_service import AccountService
 
 class AccountManagerRole:
 
-    def __init__(self, manager):
+    def __init__(self, manager,manager_id):
         """
         manager: instance of core.models.account_manager_model.AccountManager
         """
         self.manager = manager
+        self.manager_id=manager_id
         self.accountService = AccountService()
 
     def show_menu(self):

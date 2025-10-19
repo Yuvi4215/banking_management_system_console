@@ -31,12 +31,14 @@ data_dict = {
     ]
 }
 
-encrypted_id="eaa99349"
-for value in data_dict[encrypted_id]:
-    print(f"""
-            "Type": {value["type"]}
-            "Amount":{value["amount"]} 
-            "Date": {value["date"]}
-            "Remark": {value["remark"]},
+
+for key, value in data_dict.items():
+    for li in value:
+            print(f"""
+            "encrypted id" : {key},
+            "Type": {li["type"]}
+            "Amount":{li["amount"]} 
+            "Date": {li["date"]}
+            "Remark": {li["remark"]},
 
 """)

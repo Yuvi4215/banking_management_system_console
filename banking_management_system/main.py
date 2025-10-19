@@ -26,13 +26,13 @@ def main():
                 # print(user.get_role())
                 CustomerRole(user,encrypted_id).start()
         elif choice == "2":
-            user = login_manager.login("cashier")
+            user,cashier_id = login_manager.login("cashier")
             if user:
-                CashierRole(user).start()
+                CashierRole(user,cashier_id).start()
         elif choice == "3":
-            user = login_manager.login("manager")
+            user,manager_id = login_manager.login("manager")
             if user:
-                AccountManagerRole(user).start()
+                AccountManagerRole(user,manager_id).start()
         elif choice == "0":
             print("Logging out")
             flag = False

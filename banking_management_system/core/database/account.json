@@ -4,7 +4,7 @@
         "password": "pass123",
         "role": "CUSTOMER",
         "account_no": 8187047,
-        "balance": 988.0
+        "balance": 1057.0
     },
     "51e058f8": {
         "username": "sunny",
@@ -25,6 +25,6 @@
         "password": "142",
         "role": "CUSTOMER",
         "account_no": 9455827,
-        "balance": 81.0
+        "balance": 80.0
     }
 }

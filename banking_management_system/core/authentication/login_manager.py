@@ -14,48 +14,48 @@ class LoginManager:
 
     def login(self, role):
         # clear_screen()
-        # print(f"🔐 {role.capitalize()} Login")
-        # username = input("Enter username: ").strip()
+        print(f"🔐 {role.capitalize()} Login")
+        username = input("Enter username: ").strip()
 
-        # if role=="customer":
-        #     encrypted_id=None
-        #     data_dict=self.identifier_db.read_all()
-        #     for key,value in data_dict.items():
-        #         if value["username"]==username:
-        #             encrypted_id=key
-        #             # print(key)
-        #             break
-        #     password = input("Enter password: ")
-        #     user =self.account_db.getCustomer(encrypted_id)
-        #     if user["password"]==password:
-        #         # print(Customer(user["username"], None ,user["account_no"],user["balance"]))
-        #         return Customer(user["username"], None,user["account_no"],user["balance"]), encrypted_id
+        if role=="customer":
+            encrypted_id=None
+            data_dict=self.identifier_db.read_all()
+            for key,value in data_dict.items():
+                if value["username"]==username:
+                    encrypted_id=key
+                    # print(key)
+                    break
+            password = input("Enter password: ")
+            user =self.account_db.getCustomer(encrypted_id)
+            if user["password"]==password:
+                # print(Customer(user["username"], None ,user["account_no"],user["balance"]))
+                return Customer(user["username"], None,user["account_no"],user["balance"]), encrypted_id
             
-        #     else:
-        #         print("❌ No user Found!")
-        # else:
-        #     user = self.employee_db.getEmployee(username)
-        #     if user:
-        #         print(user["password"])
-        #         password = input("Enter password: ")
+            else:
+                print("❌ No user Found!")
+        else:
+            user = self.employee_db.getEmployee(username)
+            if user:
+                print(user["password"])
+                password = input("Enter password: ")
                 
-        #         if user["username"] == username and user["password"] == password:
-        #             print("✅ Login successful!\n")
-        #             return user
-        #         else:
-        #             print("❌ wrong password.")
+                if user["username"] == username and user["password"] == password:
+                    print("✅ Login successful!\n")
+                    return user, user["username"]
+                else:
+                    print("❌ wrong password.")
 
 
 
 
-        #         # if user["username"] == username and user["password"] == self.encrypt.encrypt(password):
-        #         #     print("✅ Login successful!\n")
-        #         #     return user
-        #         # else:
-        #         #     print("❌ wrong password.")
+                # if user["username"] == username and user["password"] == self.encrypt.encrypt(password):
+                #     print("✅ Login successful!\n")
+                #     return user
+                # else:
+                #     print("❌ wrong password.")
 
-        #     else:
-        #         print("❌ Username not found.")
-        #     return None
+            else:
+                print("❌ Username not found.")
+            return None
 
-        return Customer("ajay", "pass123",8187047,1000.0),"eaa99349"
+        # return Customer("ajay", "pass123",8187047,1000.0),"eaa99349"

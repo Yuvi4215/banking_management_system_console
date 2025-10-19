@@ -11,6 +11,12 @@
             "amount": 12.0,
             "date": "19-Oct-2025 12:22:18",
             "remark": "To user (b8222fb9)"
+        },
+        {
+            "type": "DEPOSIT",
+            "amount": 69.0,
+            "date": "19-Oct-2025 20:02:14",
+            "remark": "Deposited by cashier: deepak"
         }
     ],
     "51e058f8": [
@@ -41,6 +47,12 @@
             "amount": 12.0,
             "date": "19-Oct-2025 12:22:18",
             "remark": "From ajay (eaa99349)"
+        },
+        {
+            "type": "WITHDRAWAL",
+            "amount": 1.0,
+            "date": "19-Oct-2025 20:05:45",
+            "remark": "Withdrawn by cashier: deepak"
         }
     ]
 }
