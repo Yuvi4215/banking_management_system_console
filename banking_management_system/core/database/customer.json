@@ -23,12 +23,20 @@
         "address": "add Road, min",
         "account_no": 9145179
     },
-    "b8222fb9": {
-        "username": "user",
-        "full_name": "user add",
+    "7bc4745a": {
+        "username": "vaani",
+        "full_name": "vaani katiyar",
+        "email": "vaani@gmail.com",
+        "phone": "4587458756",
+        "address": "kanpur",
+        "account_no": 6134004
+    },
+    "9e1c17a6": {
+        "username": "khushbo",
+        "full_name": "Khushbu varma",
         "email": "email@gmail.com",
-        "phone": "0007770077",
-        "address": "planet earth",
-        "account_no": 9455827
+        "phone": "9852532256",
+        "address": "gurugram",
+        "account_no": 1167490
     }
 }

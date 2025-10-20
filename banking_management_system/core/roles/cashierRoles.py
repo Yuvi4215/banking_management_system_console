@@ -1,4 +1,4 @@
-# from core.utils import color_utils, emoji_utils, format_utils
+from core.utils.console_utils  import print_header,print_content,clear_screen,get_input
 from core.services.transaction_service import TransactionService
 from core.services.account_service import AccountService
 
@@ -15,6 +15,7 @@ class CashierRole:
         self.account_service = AccountService()
 
     def show_menu(self):
+        clear_screen()
         print("🏦 Cashier Dashboard")
         print("1️⃣  Deposit Money")
         print("2️⃣  Withdraw Money")

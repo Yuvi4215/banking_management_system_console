@@ -1,7 +1,7 @@
 # from core.authentication.encryption_manager import EncryptionManager
 from core.database.file_manager import FileManager
 from core.services.account_service import AccountService 
-from core.utils.console_utils import clear_screen
+from core.utils.console_utils import print_header,print_content,clear_screen,get_input
 from core.models.cashier_model import Customer
 
 class LoginManager:
@@ -13,9 +13,9 @@ class LoginManager:
 
 
     def login(self, role):
-        # clear_screen()
-        print(f"🔐 {role.capitalize()} Login")
-        username = input("Enter username: ").strip()
+        clear_screen()
+        print_header(f"🔐 {role.capitalize()} Login")
+        username = get_input("Enter username: ",True)
 
         if role=="customer":
             encrypted_id=None
@@ -25,37 +25,27 @@ class LoginManager:
                     encrypted_id=key
                     # print(key)
                     break
-            password = input("Enter password: ")
+            password = get_input("Enter password: ",True)
             user =self.account_db.getCustomer(encrypted_id)
             if user["password"]==password:
                 # print(Customer(user["username"], None ,user["account_no"],user["balance"]))
                 return Customer(user["username"], None,user["account_no"],user["balance"]), encrypted_id
             
             else:
-                print("❌ No user Found!")
+                print_content("No user Found!","ERROR")
         else:
             user = self.employee_db.getEmployee(username)
             if user:
-                print(user["password"])
-                password = input("Enter password: ")
+                password = get_input("Enter password: ",True)
                 
                 if user["username"] == username and user["password"] == password:
-                    print("✅ Login successful!\n")
+                    print_content("Login successful!","SUCCESS")
+                    get_input("Press Enter",False,0.95)
                     return user, user["username"]
                 else:
-                    print("❌ wrong password.")
+                    print_content("wrong password.","ERROR")
 
-
-
-
-                # if user["username"] == username and user["password"] == self.encrypt.encrypt(password):
-                #     print("✅ Login successful!\n")
-                #     return user
-                # else:
-                #     print("❌ wrong password.")
 
             else:
-                print("❌ Username not found.")
+                print_content("Username not found.","ERROR")
             return None
-
-        # return Customer("ajay", "pass123",8187047,1000.0),"eaa99349"

@@ -13,11 +13,19 @@ def generate_uuid(length=8):
 
 class AccountService:
     def __init__(self):
-        self.identifier_db = FileManager("banking_management_system/core/database/identifier_data.json")
-        self.account_db = FileManager("banking_management_system/core/database/account.json")
-        self.customer_db = FileManager("banking_management_system/core/database/customer.json")
+        self.identifier_db = FileManager(
+            "banking_management_system/core/database/identifier_data.json"
+        )
+        self.account_db = FileManager(
+            "banking_management_system/core/database/account.json"
+        )
+        self.customer_db = FileManager(
+            "banking_management_system/core/database/customer.json"
+        )
         # self.customer_db = FileManager("core/database/customer.json")
-        self.transaction_db = FileManager("banking_management_system/core/database/transaction.json")
+        self.transaction_db = FileManager(
+            "banking_management_system/core/database/transaction.json"
+        )
 
     def create_account(
         self, username, password, full_name, email, phone, address, balance=0.0
@@ -31,6 +39,7 @@ class AccountService:
         # --- Identifier for fast identificarion ---
         identifier_data = {
             "account_no": account_no,
+            "username": username
         }
 
         # --- Account info ---
@@ -57,7 +66,7 @@ class AccountService:
             "type": "DEPOSIT",
             "amount": balance,
             "date": get_timestamp(),
-            "remark": "Account Opening Amount"
+            "remark": "Account Opening Amount",
         }
 
         # --- Add to JSON files using UUID key ---
@@ -70,16 +79,30 @@ class AccountService:
             f"Account created successfully!\nUUID: {uuid_key}\nAccount No: {account_no}"
         )
         return uuid_key, account_no
-    
-    
+
     def getAllCustomers(self):
         return self.customer_db.read_all()
-    
+
     def getIdentifiers(self):
         return self.identifier_db.read_all()
-    
-    def deleteCustomer(self, account_no):
-        pass
+
+    def deleteCustomer(self, encrypted_id):
+        account_data = self.account_db.read_all()
+        transaction_data = self.transaction_db.read_all()
+        customer_data = self.customer_db.read_all()
+        if account_data and transaction_data and customer_data:
+            # try:
+            del account_data[encrypted_id]
+            del customer_data[encrypted_id]
+            del transaction_data[encrypted_id]
+            self.customer_db.upload_new_record(customer_data)
+            self.account_db.upload_new_record(account_data)
+            self.transaction_db.upload_new_record(transaction_data)
+            return True
+                
+        #     except Exception as e:
+        #         print(f"Exception: {e} ")
+        return False
 
     def isPresent(self, account_no):
         data_dict=self.identifier_db.read_all()
@@ -87,14 +110,6 @@ class AccountService:
             if value["account_no"]==account_no:
                 return key
         return None
-
-        # data_dict=self.getIdentifiers()
-        # acc_list=[details['account_no'] for details in data_dict.values()]
-        # if account_no in acc_list:
-        #     return True
-        # return False
-
-
 
 
 # --- Example usage ---

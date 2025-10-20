@@ -1,4 +1,4 @@
-from core.utils.console_utils import clear_screen,get_input
+from core.utils.console_utils import print_header,print_content,clear_screen,get_input
 from core.authentication.login_manager import LoginManager
 from core.roles.accountManagerRole import AccountManagerRole
 from core.roles.cashierRoles import CashierRole
@@ -6,12 +6,12 @@ from core.roles.customerRoles import CustomerRole
 
 
 def main_menu():
-    # clear_screen()
-    print("=== 🏦 Banking Management System ===")
-    print("1️⃣  Customer Login")
-    print("2️⃣  Cashier Login")
-    print("3️⃣  Account Manager Login")
-    print("0️⃣  Exit")
+    clear_screen()
+    print_header("🏦 Banking Management System ")
+    print_content("1️⃣  Customer Login","content")
+    print_content("2️⃣  Cashier Login","content")
+    print_content("3️⃣  Account Manager Login","content")
+    print_content("0️⃣  Exit","content")
 
 
 def main():
@@ -19,7 +19,8 @@ def main():
     flag, attempt = True, 0
     while flag:
         main_menu()
-        choice = input("\nSelect an option: ").strip()
+        choice=get_input("Select an option: ")
+        # choice = input("\nSelect an option: ").strip()
         if choice == "1":
             user,encrypted_id = login_manager.login("customer")
             if user:
@@ -34,16 +35,16 @@ def main():
             if user:
                 AccountManagerRole(user,manager_id).start()
         elif choice == "0":
-            print("Logging out")
+            print_content("Logging out","LOGOUT",0.90)
             flag = False
         else:
             attempt += 1
-            print("❌ Invalid option. Try again.")
-            print(f"Attempt number : {attempt} failed")
-            get_input("Press Enter",False)
+            print_content("Invalid option. Try again.","ERROR")
+            print_content(f"Attempt number : {attempt} failed","content")
+            get_input("Press Enter",False,0.95)
         if attempt > 2:
             flag = False
-    print("Program terminated....")
+    print_header("Program terminated....")
 
 
 if __name__ == "__main__":

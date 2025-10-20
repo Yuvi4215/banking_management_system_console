@@ -26,9 +26,9 @@ class FileManager:
         # print("in file manager- read all", self.file_path)
         with open(self.file_path, "r") as fp:
             return json.load(fp)
-    
+
     def getCustomer(self, encrypted_id):
-        data=self.read_all()
+        data = self.read_all()
         return data[encrypted_id]
 
     def add_record(self, record: dict):
@@ -37,6 +37,11 @@ class FileManager:
         data.update(record)  # Merge
         with open(self.file_path, "w") as fp:
             json.dump(data, fp, indent=4)
+
+    def upload_new_record(self, record: dict):
+        """Merge a new record (dict) into the existing JSON dict."""
+        with open(self.file_path, "w") as fp:
+            json.dump(record, fp, indent=4)
 
     def getEmployee(self, username):
         data = self.read_all()
@@ -54,4 +59,3 @@ class FileManager:
                 return cashier  # return the dict, not a list
 
         return None
-

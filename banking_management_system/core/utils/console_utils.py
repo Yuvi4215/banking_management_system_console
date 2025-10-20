@@ -92,15 +92,15 @@ def print_content(content: str, type_: str, indentation=0.55, resolution=100):
         print(content)
     else:
         # fallback
-        print(content)
+        print(" " * int(resolution * indentation) +color_text(f" {content} ", Color.WHITE))
 
 
-def get_input(prompt: str, required: bool = True) -> str:
+def get_input(prompt: str, required: bool = True,indentation=0.5, resolution=100) -> str:
     while True:
-        value = input(color_text(f"{prompt}: ", Color.YELLOW))
+        value = input(color_text(" " * int(resolution * indentation)+f"{prompt}: ", Color.YELLOW))
         if not required or value.strip():
             return value.strip()
-        print(color_text("❌ Input cannot be empty. Try again!", Color.RED))
+        print(" " * int(resolution*1.45 * indentation)+color_text("❌ Input cannot be empty. Try again!", Color.RED))
 
 
 if __name__ == "__main__":
