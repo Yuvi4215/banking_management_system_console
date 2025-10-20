@@ -1,6 +1,7 @@
 # core/services/account_service.py
 import random
 import uuid
+from core.utils.console_utils import print_header,print_content,clear_screen,get_input,print_main
 from core.utils.timestamp_utils import get_timestamp
 from core.database.file_manager import FileManager
 from core.models.customer_model import Customer
@@ -75,8 +76,8 @@ class AccountService:
         self.transaction_db.add_record({uuid_key: [initial_transaction]})
         self.identifier_db.add_record({uuid_key: identifier_data})
 
-        print(
-            f"Account created successfully!\nUUID: {uuid_key}\nAccount No: {account_no}"
+        print_content(
+            f"Account created successfully!\nUUID: {uuid_key}\nAccount No: {account_no}","SUCCESS"
         )
         return uuid_key, account_no
 

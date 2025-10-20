@@ -26,22 +26,25 @@ class AccountManagerRole:
         flag, attempt = True, 0
         while flag:
             self.show_menu()
-            choice = get_input("Select an option: ")
+            choice = get_input("👉 Enter choice ")
 
             if choice == "1":
-                print("Choice-1")
+                clear_screen()
                 self.create_account()
+                get_input("Press Enter",False,0.95)
             elif choice == "2":
-                print("Choice-2")
+                clear_screen()
                 self.view_customers()
+                get_input("Press Enter",False,0.95)
             elif choice == "3":
-                print("Choice-3")
+                clear_screen()
                 self.delete_account()
+                get_input("Press Enter",False,0.95)
             elif choice == "4":
-                print("Choice-4")
+                clear_screen()
                 print_content("Logging out","LOGOUT",0.90)
                 get_input("Press Enter",False,0.95)
-                break
+                flag = False
             else:
                 attempt += 1
                 print_content("Invalid option. Try again.","ERROR")
@@ -55,45 +58,30 @@ class AccountManagerRole:
     # ----------------------------------------------------------
 
     def create_account(self):
-        print("create_account(self)")
+        print_header("Account Creation Form")
         # create_account(username, password, full_name, email, phone, address, balance=0.0):
-        username = input("Enter Username: ").strip()
-        password = input("Enter Password: ").strip()
-        full_name = input("Enter Full Name: ").strip()
-        email = input("Enter Email ID: ").strip()
-        phone = input("Enter Phone Number: ").strip()
-        address = input("Enter Address: ").strip()
-        balance = input("Enter initial balance: ").strip()
+        username = get_input("Enter Username ",)
+        password = get_input("Enter Password ")
+        full_name = get_input("Enter Full Name ")
+        email = get_input("Enter Email ID ")
+        phone = get_input("Enter Phone Number ")
+        address = get_input("Enter Address ")
+        balance = get_input("Enter initial balance ")
         try:
             balance = float(balance)
             # accountService=AccountService()
             newAccount,account_no = self.accountService.create_account(
                 username, password, full_name, email, phone, address, balance
             )
-            print(f"✅ Account created for {username}")
-            print(f"Account number :: {account_no}")
+            print_content(f"Account created for {username}","SUCCESS")
+            print_content(f"Account number :: {account_no}","USER")
         except ValueError:
-            print("❌ Invalid balance entered.")
+            print_content("Exception: Invalid balance entered.","WARNING")
         except Exception as e:
-            print(f"⚠️ {e}")
-
-        # color_utils.print_header("🧩 Create New Customer Account")
-        # username = input("Enter username: ").strip()
-        # password = input("Enter password: ").strip()
-        # balance = input("Enter initial balance: ").strip()
-
-        # try:
-        #     balance = float(balance)
-        #     self.account_service.create_customer(username, password, balance)
-        #     color_utils.print_success(f"✅ Account created for {username}")
-        # except ValueError:
-        #     color_utils.print_error("❌ Invalid balance entered.")
-        # except Exception as e:
-        #     color_utils.print_error(f"⚠️ {e}")
-        pass
+            print_content(f"Exception: {e}","WARNING")
 
     def view_customers(self):
-        print("view_customers(self)")
+        print_header("All Customers Detailes")
 
         headers = [
             "ID",
@@ -117,30 +105,29 @@ class AccountManagerRole:
         create_table(headers, rows, "List of all customers.", 70, 30)
 
     def delete_account(self):
-        print("delete_account(self)")
+        print_header("Account Delete Operation.","ERROR")
         # color_utils.print_header("🗑️ Delete Customer Account")
-        account_no = input("Enter Account Number: ").strip()
+        account_no = get_input("Enter Account Number ")
         confirm = (
-            input(f"Are you sure you want to delete '{account_no}'? (y/n): ")
-            .strip()
+            get_input(f"Are you sure you want to delete '{account_no}'? (y/n): ")
             .lower()
         )
 
         if account_no.isdigit():
             if confirm == "y":
                 account_no=int(account_no)
-                print(f"🗑️ Account '{account_no}' delete operation started.")
+                print_content(f"🗑️  Account '{account_no}' delete operation started.","content")
                 encrypted_id = self.accountService.isPresent(account_no)
-                print(encrypted_id)
+                # print(encrypted_id)
                 if encrypted_id:
                     if self.accountService.deleteCustomer(encrypted_id):
-                        print(f"✅ Account '{account_no}' deleted 🗑️")
+                        print_content(f"Account '{account_no}' deleted 🗑️","SUCCESS")
                 else:
-                    print(f"❌ There is no account with this number : {account_no}.")
+                    print_content(f"There is no account with this number : {account_no}.","ERROR")
             else:
-                print("✅ Deletion canceled.")
+                print_content("Deletion canceled.","WARNING")
         else:
-            print("Account number should only be digits.")
+            print_content("Account number should only be digits.","WARNING")
 
 if __name__ == "__main__":
     am1 = AccountManagerRole()

@@ -29,6 +29,30 @@
             "amount": 15000.0,
             "date": "20-Oct-2025 10:51:52",
             "remark": "Deposited by cashier: deepak"
+        },
+        {
+            "type": "DEPOSIT",
+            "amount": 147.0,
+            "date": "20-Oct-2025 14:54:29",
+            "remark": "Deposited by cashier: vaibhav"
+        },
+        {
+            "type": "DEPOSIT",
+            "amount": 69.0,
+            "date": "20-Oct-2025 15:03:51",
+            "remark": "Deposited by cashier: vaibhav"
+        },
+        {
+            "type": "TRANSFER SENT",
+            "amount": 216.0,
+            "date": "20-Oct-2025 16:27:38",
+            "remark": "To sunny (51e058f8)"
+        },
+        {
+            "type": "TRANSFER RECEIVED",
+            "amount": 15000.0,
+            "date": "20-Oct-2025 17:18:37",
+            "remark": "From yuvii (cfaa3d30)"
         }
     ],
     "51e058f8": [
@@ -37,14 +61,12 @@
             "amount": 1000,
             "date": "18-Oct-2025 12:56:33",
             "remark": "Account Opening Amount"
-        }
-    ],
-    "fdaa6e94": [
+        },
         {
-            "type": "DEPOSIT",
-            "amount": 169.0,
-            "date": "18-Oct-2025 13:24:35",
-            "remark": "Account Opening Amount"
+            "type": "TRANSFER RECEIVED",
+            "amount": 216.0,
+            "date": "20-Oct-2025 16:27:38",
+            "remark": "From ajay (eaa99349)"
         }
     ],
     "7bc4745a": [
@@ -67,6 +89,40 @@
             "amount": 57.0,
             "date": "20-Oct-2025 10:48:59",
             "remark": "From ajay (eaa99349)"
+        }
+    ],
+    "02034b80": [
+        {
+            "type": "DEPOSIT",
+            "amount": 70.0,
+            "date": "20-Oct-2025 14:07:56",
+            "remark": "Account Opening Amount"
+        }
+    ],
+    "cfaa3d30": [
+        {
+            "type": "DEPOSIT",
+            "amount": 22222.0,
+            "date": "20-Oct-2025 17:01:16",
+            "remark": "Account Opening Amount"
+        },
+        {
+            "type": "WITHDRAWAL",
+            "amount": 69.0,
+            "date": "20-Oct-2025 17:04:07",
+            "remark": "Withdrawn by cashier: deepak"
+        },
+        {
+            "type": "WITHDRAWAL",
+            "amount": 3.0,
+            "date": "20-Oct-2025 17:05:30",
+            "remark": "Withdrawn by cashier: deepak"
+        },
+        {
+            "type": "TRANSFER SENT",
+            "amount": 15000.0,
+            "date": "20-Oct-2025 17:18:37",
+            "remark": "To ajay (eaa99349)"
         }
     ]
 }

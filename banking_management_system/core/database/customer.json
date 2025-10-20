@@ -15,14 +15,6 @@
         "address": "5 Fc Road, Pune",
         "account_no": 2003963
     },
-    "fdaa6e94": {
-        "username": "admin",
-        "full_name": "Add min",
-        "email": "add@min.com",
-        "phone": "9988776655",
-        "address": "add Road, min",
-        "account_no": 9145179
-    },
     "7bc4745a": {
         "username": "vaani",
         "full_name": "vaani katiyar",
@@ -38,5 +30,21 @@
         "phone": "9852532256",
         "address": "gurugram",
         "account_no": 1167490
+    },
+    "02034b80": {
+        "username": "user123",
+        "full_name": "User name",
+        "email": "user@name.com",
+        "phone": "7854785478",
+        "address": "user, Name",
+        "account_no": 6615602
+    },
+    "cfaa3d30": {
+        "username": "yuvii",
+        "full_name": "U V",
+        "email": "uv@gmail.com",
+        "phone": "7979797979",
+        "address": "Solapur, MAHA",
+        "account_no": 2097012
     }
 }

@@ -19,13 +19,24 @@ def clear_screen():
 def print_header(title: str, line_count: int = 100):
     count = len(title)
     space = (line_count - count) // 2
-    print(color_text("\n" + " " * 50 + "=" * line_count, Color.CYAN))
+    print(color_text("\n" + " " * 50 + "-" * line_count, Color.CYAN))
     print(
         color_text(
             " " * 50 + " " * space + f" {title.upper()} ", Color.BOLD + Color.BLUE
         )
     )
-    print(color_text(" " * 50 + "=" * line_count, Color.CYAN))
+    print(color_text(" " * 50 + "-" * line_count, Color.CYAN))
+
+def print_main(title: str, line_count: int = 100):
+    count = len(title)
+    space = (line_count - count) // 2
+    print(color_text("\n" + " " * 50 + "=" * line_count, Color.ORANGE))
+    print(
+        color_text(
+            " " * 50 + " " * space + f" {title.upper()} ", Color.BOLD + Color.ORANGE
+        )
+    )
+    print(color_text(" " * 50 + "=" * line_count, Color.ORANGE))
 
 
 def print_content(content: str, type_: str, indentation=0.55, resolution=100):

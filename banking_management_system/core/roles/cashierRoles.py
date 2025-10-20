@@ -1,4 +1,5 @@
 from core.utils.console_utils  import print_header,print_content,clear_screen,get_input
+from core.utils.table_utils import create_table
 from core.services.transaction_service import TransactionService
 from core.services.account_service import AccountService
 
@@ -16,11 +17,11 @@ class CashierRole:
 
     def show_menu(self):
         clear_screen()
-        print("🏦 Cashier Dashboard")
-        print("1️⃣  Deposit Money")
-        print("2️⃣  Withdraw Money")
-        print("3️⃣  View All Transactions")
-        print("4️⃣  Logout")
+        print_header("🏦 Cashier Dashboard")
+        print_content("1️⃣  Deposit Money","content")
+        print_content("2️⃣  Withdraw Money","content")
+        print_content("3️⃣  View All Transactions","content")
+        print_content("4️⃣  Logout","content")
 
     def start(self):
         """Main cashier loop"""
@@ -28,23 +29,31 @@ class CashierRole:
         flag,attempt=True,0
         while flag:
             self.show_menu()
-            choice = input("\n👉 Enter choice: ").strip()
+            choice = get_input("👉 Enter choice: ")
 
             if choice == "1":
+                clear_screen()
                 self.deposit_money()
+                get_input("Press Enter",False,0.95)
             elif choice == "2":
+                clear_screen()
                 self.withdraw_money()
+                get_input("Press Enter",False,0.95)
             elif choice == "3":
+                clear_screen()
                 self.view_all_transactions()
+                get_input("Press Enter",False,0.95)
             elif choice == "4":
-                print("👋 Logging out...")
+                clear_screen()
+                print_content("👋 Logging out...","LOGOUT",0.90)
+                get_input("Press Enter",False,0.95)
                 # color_utils.print_info("👋 Logging out...")
-                break
+                flag = False
             else:
-                # color_utils.print_error("❌ Invalid choice, try again.")
                 attempt += 1
-                print("❌ Invalid option. Try again.")
-                print(f"Attempt number : {attempt} failed")
+                print_content("❌ Invalid option. Try again.","ERROR")
+                print_content(f"Attempt number : {attempt} failed","content")
+                get_input("Press Enter",False,0.95)
             if attempt > 2:
                 flag = False
 
@@ -52,96 +61,30 @@ class CashierRole:
     # Cashier Operations
     # ----------------------------------------------------------
     def deposit_money(self):
-        print("💰 Deposit Money")
+        print_header("💰 Deposit Money")
         try:
-            account_no = int(input("Enter account number: ").strip())
-            amount = float(input("Enter deposit amount: ").strip())
+            account_no = int(get_input("Enter account number "))
+            amount = float(get_input("Enter deposit amount "))
             result = self.transaction_service.deposit_by_account(self.cashier_id, account_no, amount)
-            print(result)
+            print_content(result,"SUCCESS")
         except Exception as e:
-            print(f"⚠️ {e}")
+            print_content(f"{e}","WARNING")
 
     def withdraw_money(self):
-        print("🏧 Withdraw Money")
+        print_header("🏧 Withdraw Money")
         try:
-            account_no = int(input("Enter account number: ").strip())
-            amount = float(input("Enter withdrawal amount: ").strip())
+            account_no = int(get_input("Enter account number "))
+            amount = float(get_input("Enter withdrawal amount "))
             result = self.transaction_service.withdraw_by_account(self.cashier_id, account_no, amount)
-            print(result)
+            print_content(result,"SUCCESS")
         except Exception as e:
-            print(f"⚠️ {e}")
+            print_content(f"{e}","WARNING")
 
 
     def view_all_transactions(self):
-        print("view_all_transactions(self)")
-
-        print("🧾 All Transactions")
-        transactions = self.transaction_service.get_all_transactions()
-        print(transactions)
-
-
-
-        # color_utils.print_header("🧾 All Transactions")
-        # transactions = self.transaction_service.get_all_transactions()
-        # format_utils.print_table(transactions)
-        pass
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    # def deposit_money(self):
-    #     print("deposit_money(self)")
-    #     # color_utils.print_header("💰 Deposit Money")
-    #     # username = input("Enter customer username: ").strip()
-    #     # amount = input("Enter amount to deposit: ").strip()
-
-    #     # try:
-    #     #     amount = float(amount)
-    #     #     self.transaction_service.deposit(self.cashier, username, amount)
-    #     #     color_utils.print_success(f"✅ Deposited ₹{amount:.2f} to {username}")
-    #     # except Exception as e:
-    #     #     color_utils.print_error(f"⚠️ {e}")
-    #     pass
-
-    # def withdraw_money(self):
-    #     print("withdraw_money(self)")
-    #     # color_utils.print_header("🏧 Withdraw Money")
-    #     # username = input("Enter customer username: ").strip()
-    #     # amount = input("Enter amount to withdraw: ").strip()
-
-    #     # try:
-    #     #     amount = float(amount)
-    #     #     self.transaction_service.withdraw(self.cashier, username, amount)
-    #     #     color_utils.print_success(f"✅ Withdrawn ₹{amount:.2f} from {username}")
-    #     # except Exception as e:
-    #     #     color_utils.print_error(f"⚠️ {e}")
-    #     pass
-
-
-
+        print_header("🧾 All Transactions")
+        headers, transactions = self.transaction_service.get_all_transactions()
+        create_table(headers, transactions, "List of all transactions.", 70, 40)
 
 if __name__ == "__main__":
     c_role = CashierRole()

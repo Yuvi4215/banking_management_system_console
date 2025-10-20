@@ -16,6 +16,14 @@ class TransactionService:
                 return user_id
         return None
 
+    def get_current_status(self, encrypted_id):
+        accounts = self._load_data(self.ACCOUNT_FILE)
+        account = accounts.get(encrypted_id)
+        if not account:
+            return []
+
+        # Return a list of values (for your table)
+        return [list(account.values())]
 
     def _load_data(self, file_path):
         if not os.path.exists(file_path):
@@ -107,40 +115,35 @@ class TransactionService:
         )
 
     def view_transactions(self, encrypted_id=None):
-        """View all or specific account transactions."""
+        """Return list of transactions for a given user or all users."""
         data_dict = self._load_data(self.TRANSACTION_FILE)
 
-        # 🧩 If specific account requested
+        # 🧩 Filter transactions by user if encrypted_id is given
         if encrypted_id:
-            if encrypted_id not in data_dict:
-                return f"No transactions found for this User"
-
-            transactions = data_dict[encrypted_id]
+            transactions = data_dict.get(encrypted_id, [])
         else:
-            # 🧩 Combine all transactions across accounts
+            # Combine all transactions from all users
             transactions = [txn for txns in data_dict.values() for txn in txns]
 
-        # 🧩 If still empty
         if not transactions:
-            return "No transactions found."
+            return []
 
-        # 🧾 Build formatted output
-        result_lines = []
+        # 🧩 Build a proper 2D list for the table
+        rows = []
         for txn in transactions:
-            result_lines.append(
-                f"""\tType: {txn.get('type', 'N/A')}
-        Amount: ₹{txn.get('amount', '0')}
-        Date: {txn.get('date', 'Unknown')}
-        Remark: {txn.get('remark', 'No remark')}
-    """
-            )
+            # Ensure txn is a dict
+            if isinstance(txn, dict):
+                rows.append(
+                    [
+                        txn.get("type", "N/A"),
+                        f"₹{txn.get('amount', '0')}",
+                        txn.get("date", "Unknown"),
+                        txn.get("remark", "No remark"),
+                    ]
+                )
+        return rows
 
-        # Join all transactions nicely
-        result = "\n".join(result_lines)
-        return result
-    
     def get_all_transactions(self, encrypted_id=None):
-
         """View all or specific account transactions."""
         data_dict = self._load_data(self.TRANSACTION_FILE)
 
@@ -158,22 +161,24 @@ class TransactionService:
         if not transactions:
             return "No transactions found."
 
-        # 🧾 Build formatted output
-        result_lines = []
+        # 🧾 Build structured data for table
+        headers = ["Encrypted ID", "Type", "Amount", "Date", "Remark"]
+        rows = []
+
         for enc_id, txns in transactions.items():
             for txn in txns:
-                result_lines.append(
-                    f'''\t"encrypted id" : {enc_id},
-    \t"Type": {txn.get("type", "N/A")}
-    \t"Amount": {txn.get("amount", "0")}
-    \t"Date": {txn.get("date", "Unknown")}
-    \t"Remark": {txn.get("remark", "No remark")},\n'''
+                rows.append(
+                    [
+                        enc_id,
+                        txn.get("type", "N/A"),
+                        txn.get("amount", "0"),
+                        txn.get("date", "Unknown"),
+                        txn.get("remark", "No remark"),
+                    ]
                 )
 
-        # Join all transactions nicely
-        result = "\n".join(result_lines)
-        return result
-    
+        # Return headers and rows (so UI/controller can display them)
+        return headers, rows
 
     def deposit_by_account(self, cashier_id, account_no, amount):
         """Deposit money into a customer's account using account number."""
