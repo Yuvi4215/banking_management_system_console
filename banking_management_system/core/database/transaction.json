@@ -53,6 +53,12 @@
             "amount": 15000.0,
             "date": "20-Oct-2025 17:18:37",
             "remark": "From yuvii (cfaa3d30)"
+        },
+        {
+            "type": "DEPOSIT",
+            "amount": 78554.0,
+            "date": "20-Oct-2025 19:23:06",
+            "remark": "Deposited by cashier: vaibhav"
         }
     ],
     "51e058f8": [
@@ -67,6 +73,12 @@
             "amount": 216.0,
             "date": "20-Oct-2025 16:27:38",
             "remark": "From ajay (eaa99349)"
+        },
+        {
+            "type": "TRANSFER SENT",
+            "amount": 12.0,
+            "date": "22-Oct-2025 18:02:06",
+            "remark": "To vaani (7bc4745a)"
         }
     ],
     "7bc4745a": [
@@ -75,20 +87,12 @@
             "amount": 7859.0,
             "date": "19-Oct-2025 22:33:22",
             "remark": "Account Opening Amount"
-        }
-    ],
-    "9e1c17a6": [
-        {
-            "type": "DEPOSIT",
-            "amount": 1400.0,
-            "date": "20-Oct-2025 10:44:33",
-            "remark": "Account Opening Amount"
         },
         {
             "type": "TRANSFER RECEIVED",
-            "amount": 57.0,
-            "date": "20-Oct-2025 10:48:59",
-            "remark": "From ajay (eaa99349)"
+            "amount": 12.0,
+            "date": "22-Oct-2025 18:02:06",
+            "remark": "From sunny (51e058f8)"
         }
     ],
     "02034b80": [
@@ -123,6 +127,22 @@
             "amount": 15000.0,
             "date": "20-Oct-2025 17:18:37",
             "remark": "To ajay (eaa99349)"
+        }
+    ],
+    "4171bc2a": [
+        {
+            "type": "DEPOSIT",
+            "amount": 150.0,
+            "date": "20-Oct-2025 18:51:05",
+            "remark": "Account Opening Amount"
+        }
+    ],
+    "a8254367": [
+        {
+            "type": "DEPOSIT",
+            "amount": 1400.0,
+            "date": "22-Oct-2025 18:04:37",
+            "remark": "Account Opening Amount"
         }
     ]
 }

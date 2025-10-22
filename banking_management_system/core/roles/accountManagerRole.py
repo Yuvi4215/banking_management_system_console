@@ -57,28 +57,122 @@ class AccountManagerRole:
     # Manager Operations
     # ----------------------------------------------------------
 
+
     def create_account(self):
         print_header("Account Creation Form")
-        # create_account(username, password, full_name, email, phone, address, balance=0.0):
-        username = get_input("Enter Username ",)
-        password = get_input("Enter Password ")
-        full_name = get_input("Enter Full Name ")
-        email = get_input("Enter Email ID ")
-        phone = get_input("Enter Phone Number ")
-        address = get_input("Enter Address ")
-        balance = get_input("Enter initial balance ")
+        print_content("Set of rules for each fields", "INFO")
+        print_content("1. Username and password filed first 5 characters are considered", "content")
+        print_content("2. Full Name contain only String and length limit is 15", "content")
+        print_content("3. Email Should end with @gmail.com and length limit is 15", "content")
+        print_content("4. Phone number should only containt digits and lenght limit is 10", "content")
+        print_content("5. Balance should be positive number", "content")
+
+
+        # --- Username check ---
+        while True:
+            username = get_input("Enter Username ").lower()[:5]
+            if self.accountService.is_username_available(username):
+                break
+            print_content(f"Username '{username}' is already taken. Try another one.", "WARNING")
+
+        # --- Password ---
+        password = get_input("Enter Password ")[:5]
+
+        # --- Full name validation (no numbers allowed) ---
+        while True:
+            full_name = get_input("Enter Full Name ")[:15]
+            if not any(char.isdigit() for char in full_name):
+                break
+            print_content("Full Name should not contain numbers. Try again.", "WARNING")
+
+        # --- Email validation (must end with @gmail.com) ---
+        while True:
+            email = get_input("Enter Email ID ")[:15]  # Allow longer emails
+            if email.endswith("@gmail.com"):
+                break
+            print_content("Email must end with '@gmail.com'. Try again.", "WARNING")
+
+        # --- Phone validation (numbers only) ---
+        while True:
+            phone = get_input("Enter Phone Number ")[:10]
+            if phone.isdigit():
+                break
+            print_content("Phone number must contain only digits. Try again.", "WARNING")
+
+        # --- Address ---
+        address = get_input("Enter Address ")[:50]
+
+        # --- Initial balance ---
+        while True:
+            balance = get_input("Enter initial balance ")
+            try:
+                balance = float(balance)
+                if balance < 0:
+                    raise ValueError
+                break
+            except ValueError:
+                print_content("Invalid balance entered. Enter a positive number.", "WARNING")
+
         try:
-            balance = float(balance)
-            # accountService=AccountService()
-            newAccount,account_no = self.accountService.create_account(
+            newAccount, account_no = self.accountService.create_account(
                 username, password, full_name, email, phone, address, balance
             )
-            print_content(f"Account created for {username}","SUCCESS")
-            print_content(f"Account number :: {account_no}","USER")
-        except ValueError:
-            print_content("Exception: Invalid balance entered.","WARNING")
+            print_content(f"Account created for {username}", "SUCCESS")
+            print_content(f"Account number :: {account_no}", "USER")
         except Exception as e:
-            print_content(f"Exception: {e}","WARNING")
+            print_content(f"Exception: {e}", "WARNING")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    # def create_account(self):
+    #     print_header("Account Creation Form")
+    #     # create_account(username, password, full_name, email, phone, address, balance=0.0):
+    #     while True:
+    #         username = get_input("Enter Username ").lower()[:5]
+    #         if self.accountService.is_username_available(username):
+    #             break
+    #         print_content(f"Username '{username}' is already taken. Try another one.", "WARNING")
+
+    #     password = get_input("Enter Password ")[:5]
+    #     full_name = get_input("Enter Full Name ")[:15]
+    #     email = get_input("Enter Email ID ")[:15]
+    #     phone = get_input("Enter Phone Number ")[:10]
+    #     address = get_input("Enter Address ")[:10]
+    #     balance = get_input("Enter initial balance ")
+    #     try:
+    #         balance = float(balance)
+    #         # accountService=AccountService()
+    #         newAccount,account_no = self.accountService.create_account(
+    #             username, password, full_name, email, phone, address, balance
+    #         )
+    #         print_content(f"Account created for {username}","SUCCESS")
+    #         print_content(f"Account number :: {account_no}","USER")
+    #     except ValueError:
+    #         print_content("Exception: Invalid balance entered.","WARNING")
+    #     except Exception as e:
+    #         print_content(f"Exception: {e}","WARNING")
+
+
+
+
+
 
     def view_customers(self):
         print_header("All Customers Detailes")
@@ -105,7 +199,7 @@ class AccountManagerRole:
         create_table(headers, rows, "List of all customers.", 70, 30)
 
     def delete_account(self):
-        print_header("Account Delete Operation.","ERROR")
+        print_header("Account Delete Operation.")
         # color_utils.print_header("🗑️ Delete Customer Account")
         account_no = get_input("Enter Account Number ")
         confirm = (

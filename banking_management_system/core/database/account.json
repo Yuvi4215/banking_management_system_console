@@ -4,28 +4,21 @@
         "password": "pass123",
         "role": "CUSTOMER",
         "account_no": 8187047,
-        "balance": 31000.0
+        "balance": 109554.0
     },
     "51e058f8": {
         "username": "sunny",
         "password": "password",
         "role": "CUSTOMER",
         "account_no": 2003963,
-        "balance": 1216.0
+        "balance": 1204.0
     },
     "7bc4745a": {
         "username": "vaani",
         "password": "pass",
         "role": "CUSTOMER",
         "account_no": 6134004,
-        "balance": 7859.0
-    },
-    "9e1c17a6": {
-        "username": "khushbo",
-        "password": "pass123",
-        "role": "CUSTOMER",
-        "account_no": 1167490,
-        "balance": 1457.0
+        "balance": 7871.0
     },
     "02034b80": {
         "username": "user123",
@@ -40,5 +33,19 @@
         "role": "CUSTOMER",
         "account_no": 2097012,
         "balance": 7150.0
+    },
+    "4171bc2a": {
+        "username": "usern",
+        "password": "paaaa",
+        "role": "CUSTOMER",
+        "account_no": 5393268,
+        "balance": 150.0
+    },
+    "a8254367": {
+        "username": "varma",
+        "password": "14555",
+        "role": "CUSTOMER",
+        "account_no": 5973177,
+        "balance": 1400.0
     }
 }

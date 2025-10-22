@@ -23,14 +23,6 @@
         "address": "kanpur",
         "account_no": 6134004
     },
-    "9e1c17a6": {
-        "username": "khushbo",
-        "full_name": "Khushbu varma",
-        "email": "email@gmail.com",
-        "phone": "9852532256",
-        "address": "gurugram",
-        "account_no": 1167490
-    },
     "02034b80": {
         "username": "user123",
         "full_name": "User name",
@@ -46,5 +38,21 @@
         "phone": "7979797979",
         "address": "Solapur, MAHA",
         "account_no": 2097012
+    },
+    "4171bc2a": {
+        "username": "usern",
+        "full_name": "username is use",
+        "email": "username@gmail.",
+        "phone": "9988776655",
+        "address": "address is",
+        "account_no": 5393268
+    },
+    "a8254367": {
+        "username": "varma",
+        "full_name": "varma",
+        "email": "@gmail.com",
+        "phone": "1111111111",
+        "address": "solapur, maharashtra",
+        "account_no": 5973177
     }
 }

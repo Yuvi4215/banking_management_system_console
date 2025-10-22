@@ -42,3 +42,6 @@ for key, value in data_dict.items():
             "Remark": {li["remark"]},
 
 """)
+            
+city="sdf"
+print(city[:8])

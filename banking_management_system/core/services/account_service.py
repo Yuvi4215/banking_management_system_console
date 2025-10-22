@@ -76,10 +76,26 @@ class AccountService:
         self.transaction_db.add_record({uuid_key: [initial_transaction]})
         self.identifier_db.add_record({uuid_key: identifier_data})
 
-        print_content(
-            f"Account created successfully!\nUUID: {uuid_key}\nAccount No: {account_no}","SUCCESS"
-        )
+        print_content(f"Account created successfully! ","SUCCESS")
+        print_content(f"UUID: {uuid_key}, Account No: {account_no}", "SUCCESS")
         return uuid_key, account_no
+    
+    def is_username_available(self, username):
+        """
+        Check if the given username is available (not already taken) using identifier_db.
+
+        Args:
+            username (str): The username to check.
+
+        Returns:
+            bool: True if available, False if already exists.
+        """
+        identifiers = self.identifier_db.read_all()  # Read all UUID keys
+        for data in identifiers.values():
+            if data.get("username", "").lower() == username.lower():
+                return False
+        return True
+
 
     def getAllCustomers(self):
         return self.customer_db.read_all()
