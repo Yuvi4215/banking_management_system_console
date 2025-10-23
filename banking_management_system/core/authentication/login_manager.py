@@ -6,6 +6,7 @@ from core.utils.console_utils import (
     print_content,
     clear_screen,
     get_input,
+    get_password
 )
 from core.models.cashier_model import Customer
 
@@ -46,7 +47,7 @@ class LoginManager:
                 get_input("Press Enter",False,0.95)
                 return None, None
 
-            password = get_input("Enter password ", True)
+            password = get_password("Enter password ", True)
             user = self.account_db.getCustomer(encrypted_id)
 
             # 🧩 If user found and password matches
@@ -72,7 +73,7 @@ class LoginManager:
                 get_input("Press Enter",False,0.95)
                 return None, None
 
-            password = get_input("Enter password ", True)
+            password = get_password("Enter password ", True)
             if user.get("password") == password:
                 print_content("Login successful!", "SUCCESS")
                 get_input("Press Enter", False, 0.95)

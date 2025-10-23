@@ -3,6 +3,7 @@ import os
 from core.utils.emoji import Emoji
 from core.utils.color_utils import color_text, Color
 from colorama import init as colorama_init
+import stdiomask
 
 
 # from emoji import Emoji
@@ -112,6 +113,15 @@ def get_input(prompt: str, required: bool = True,indentation=0.5, resolution=100
         if not required or value.strip():
             return value.strip()
         print(" " * int(resolution*1.45 * indentation)+color_text("❌ Input cannot be empty. Try again!", Color.RED))
+
+def get_password(prompt: str, required: bool = True,indentation=0.5, resolution=100) -> str:
+    while True:
+        value = stdiomask.getpass(color_text(" " * int(resolution * indentation)+f"{prompt}: ", Color.YELLOW),mask="*")
+        if not required or value.strip():
+            return value.strip()
+        print(" " * int(resolution*1.45 * indentation)+color_text("❌ Input cannot be empty. Try again!", Color.RED))
+        # (prompt="Enter password: ", mask="*")
+        # stdiomask.getpass()
 
 
 if __name__ == "__main__":
