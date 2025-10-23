@@ -15,7 +15,7 @@ class AccountManagerRole:
 
     def show_menu(self):
         clear_screen()
-        print_header("🧾 Account Manager Dashboard")
+        print_header(f"🧾 Profile: {self.manager["username"]} Dashboard")
         print_content("1️⃣  Create New Customer Account","content")
         print_content("2️⃣  View All Customers","content")
         print_content("3️⃣  Delete Customer Account","content")
@@ -41,7 +41,7 @@ class AccountManagerRole:
                 self.delete_account()
                 get_input("Press Enter",False,0.95)
             elif choice == "4":
-                clear_screen()
+                # clear_screen()
                 print_content("Logging out","LOGOUT",0.90)
                 get_input("Press Enter",False,0.95)
                 flag = False
@@ -121,58 +121,6 @@ class AccountManagerRole:
             print_content(f"Account number :: {account_no}", "USER")
         except Exception as e:
             print_content(f"Exception: {e}", "WARNING")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    # def create_account(self):
-    #     print_header("Account Creation Form")
-    #     # create_account(username, password, full_name, email, phone, address, balance=0.0):
-    #     while True:
-    #         username = get_input("Enter Username ").lower()[:5]
-    #         if self.accountService.is_username_available(username):
-    #             break
-    #         print_content(f"Username '{username}' is already taken. Try another one.", "WARNING")
-
-    #     password = get_input("Enter Password ")[:5]
-    #     full_name = get_input("Enter Full Name ")[:15]
-    #     email = get_input("Enter Email ID ")[:15]
-    #     phone = get_input("Enter Phone Number ")[:10]
-    #     address = get_input("Enter Address ")[:10]
-    #     balance = get_input("Enter initial balance ")
-    #     try:
-    #         balance = float(balance)
-    #         # accountService=AccountService()
-    #         newAccount,account_no = self.accountService.create_account(
-    #             username, password, full_name, email, phone, address, balance
-    #         )
-    #         print_content(f"Account created for {username}","SUCCESS")
-    #         print_content(f"Account number :: {account_no}","USER")
-    #     except ValueError:
-    #         print_content("Exception: Invalid balance entered.","WARNING")
-    #     except Exception as e:
-    #         print_content(f"Exception: {e}","WARNING")
-
-
-
-
-
 
     def view_customers(self):
         print_header("All Customers Detailes")

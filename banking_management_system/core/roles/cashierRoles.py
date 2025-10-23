@@ -17,7 +17,7 @@ class CashierRole:
 
     def show_menu(self):
         clear_screen()
-        print_header("🏦 Cashier Dashboard")
+        print_header(f"🏦 Cashier-Profile: {self.cashier["username"]} Dashboard")
         print_content("1️⃣  Deposit Money","content")
         print_content("2️⃣  Withdraw Money","content")
         print_content("3️⃣  View All Transactions","content")
@@ -44,7 +44,7 @@ class CashierRole:
                 self.view_all_transactions()
                 get_input("Press Enter",False,0.95)
             elif choice == "4":
-                clear_screen()
+                # clear_screen()
                 print_content("👋 Logging out...","LOGOUT",0.90)
                 get_input("Press Enter",False,0.95)
                 # color_utils.print_info("👋 Logging out...")

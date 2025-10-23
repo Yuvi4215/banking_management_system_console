@@ -69,7 +69,7 @@ class CustomerRole:
         print_header("👤 Your Account Details")
         headers = ["Username", "Password", "Role", "Account Number", "Balance"]
         row = self.transaction_service.get_current_status(encrypted_id)
-        create_table(headers, row, "List of all transactions.", 70, 55)
+        create_table(headers, row, "Customer Account detailes.", 70, 55)
 
     def transfer_money(self):
         print_header("💸 Transfer Money")

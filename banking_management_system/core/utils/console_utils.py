@@ -16,7 +16,7 @@ def clear_screen():
     os.system("cls" if os.name == "nt" else "clear")
 
 
-def print_header(title: str, line_count: int = 100):
+def print_header(title: str, line_count: int = 120):
     count = len(title)
     space = (line_count - count) // 2
     print(color_text("\n" + " " * 50 + "-" * line_count, Color.CYAN))

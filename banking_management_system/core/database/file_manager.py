@@ -48,14 +48,14 @@ class FileManager:
 
         # Manager
         if username.lower() == "manager" and "manager" in data:
-            print(data["manager"])
+            # print(data["manager"])
             return data["manager"]
 
         # Cashiers
         cashiers = data.get("cashier", [])
         for cashier in cashiers:
             if cashier.get("username") == username:
-                print(cashier)
+                # print(cashier)
                 return cashier  # return the dict, not a list
 
         return None
