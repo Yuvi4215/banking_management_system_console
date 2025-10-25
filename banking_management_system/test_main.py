@@ -1,47 +1,34 @@
-data_dict = {
-    "eaa99349": [
-        {
-            "type": "DEPOSIT",
-            "amount": 1000,
-            "date": "18-Oct-2025 12:53:34",
-            "remark": "Account Opening Amount",
-        },
-        {
-            "type": "DEPOSIT",
-            "amount": 1000,
-            "date": "18-Oct-2025 12:56:33",
-            "remark": "Account Opening Amount",
-        }
-    ],
-    "fdaa6e94": [
-        {
-            "type": "DEPOSIT",
-            "amount": 169.0,
-            "date": "18-Oct-2025 13:24:35",
-            "remark": "Account Opening Amount",
-        }
-    ],
-    "b8222fb9": [
-        {
-            "type": "DEPOSIT",
-            "amount": 69.0,
-            "date": "18-Oct-2025 14:50:46",
-            "remark": "Account Opening Amount",
-        }
-    ]
-}
+import qrcode
+import shutil
+from io import StringIO
+import sys
 
+# --- Your UPI link ---
+upi_link = (
+    "upi://pay?"
+    "pa=7775090578@ybl&"
+    "pn=YUVRAJ%20RAJENDRAKUMAR%20VARMA&"
+    "mc=0000&"
+    "mode=02&"
+    "purpose=00"
+)
 
-for key, value in data_dict.items():
-    for li in value:
-            print(f"""
-            "encrypted id" : {key},
-            "Type": {li["type"]}
-            "Amount":{li["amount"]} 
-            "Date": {li["date"]}
-            "Remark": {li["remark"]},
+# --- Create smaller QR ---
+qr = qrcode.QRCode(version=2, border=1)
+qr.add_data(upi_link)
+qr.make(fit=True)
 
-""")
-            
-city="sdf"
-print(city[:8])
+# --- Capture QR output as text ---
+old_stdout = sys.stdout
+sys.stdout = mystdout = StringIO()
+qr.print_ascii()
+sys.stdout = old_stdout
+
+qr_text = mystdout.getvalue().splitlines()
+
+# --- Get terminal width ---
+terminal_width = shutil.get_terminal_size().columns
+
+# --- Print each line centered ---
+for line in qr_text:
+    print(line.center(terminal_width))

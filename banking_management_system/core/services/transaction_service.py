@@ -145,12 +145,16 @@ class TransactionService:
 
     def get_all_transactions(self, encrypted_id=None):
         """View all or specific account transactions."""
+        # 🧾 Build structured data for table
+        headers = ["Encrypted ID", "Type", "Amount", "Date", "Remark"]
+        
+        
         data_dict = self._load_data(self.TRANSACTION_FILE)
 
         # 🧩 If specific account requested
         if encrypted_id:
             if encrypted_id not in data_dict:
-                return "No transactions found for this User"
+                return headers,[]
             # Transactions for a specific account
             transactions = {encrypted_id: data_dict[encrypted_id]}
         else:
@@ -159,10 +163,8 @@ class TransactionService:
 
         # 🧩 If still empty
         if not transactions:
-            return "No transactions found."
+            return headers,[]
 
-        # 🧾 Build structured data for table
-        headers = ["Encrypted ID", "Type", "Amount", "Date", "Remark"]
         rows = []
 
         for enc_id, txns in transactions.items():
@@ -271,3 +273,30 @@ class TransactionService:
             f"✅ ₹{amount:.2f} withdrawn successfully from A/C {account_no}.\n"
             f"Remaining balance: ₹{customer.get_balance():.2f}"
         )
+    
+
+    def recive_upi_money(self, encrypted_id, amount):
+        """Recive money into a customer's account using QR code."""
+        transactions = self._load_data(self.TRANSACTION_FILE)
+
+        customer = self._load_customer(encrypted_id)
+
+        # --- Perform deposit ---
+        customer.deposit(amount)
+        self._save_customer(encrypted_id, customer)
+
+        # --- Record transaction ---
+        txn = {
+            "type": "UPI-Recived",
+            "amount": amount,
+            "date": get_timestamp(),
+            "remark": "Recived Through : UPI",
+        }
+        transactions.setdefault(encrypted_id, []).append(txn)
+        self._save_data(self.TRANSACTION_FILE, transactions)
+
+        return (
+            f"₹{amount:.2f} Amount recived successfully."
+            f"New balance: ₹{customer.get_balance():.2f}"
+        )
+

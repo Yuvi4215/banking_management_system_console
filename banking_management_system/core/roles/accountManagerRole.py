@@ -144,7 +144,7 @@ class AccountManagerRole:
         ]
 
         # Call your table creation function
-        create_table(headers, rows, "List of all customers.", 70, 30)
+        create_table(headers, rows, "List of all customers.", 70, 40)
 
     def delete_account(self):
         print_header("Account Delete Operation.")

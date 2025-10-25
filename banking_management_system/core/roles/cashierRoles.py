@@ -83,8 +83,8 @@ class CashierRole:
 
     def view_all_transactions(self):
         print_header("🧾 All Transactions")
-        headers, transactions = self.transaction_service.get_all_transactions()
-        create_table(headers, transactions, "List of all transactions.", 70, 40)
+        headers, transactions= self.transaction_service.get_all_transactions()
+        create_table(headers, transactions, "List of all transactions.", 70, 52)
 
 if __name__ == "__main__":
     c_role = CashierRole()

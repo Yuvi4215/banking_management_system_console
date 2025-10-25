@@ -1,148 +1,70 @@
 {
-    "eaa99349": [
+    "5cb2c4aa": [
         {
             "type": "DEPOSIT",
-            "amount": 1000,
-            "date": "18-Oct-2025 12:53:34",
+            "amount": 78900.0,
+            "date": "23-Oct-2025 19:02:20",
             "remark": "Account Opening Amount"
         },
         {
             "type": "TRANSFER SENT",
-            "amount": 12.0,
-            "date": "19-Oct-2025 12:22:18",
-            "remark": "To user (b8222fb9)"
+            "amount": 111.0,
+            "date": "25-Oct-2025 18:55:30",
+            "remark": "To vaani (e8536ad1)"
         },
         {
-            "type": "DEPOSIT",
-            "amount": 69.0,
-            "date": "19-Oct-2025 20:02:14",
-            "remark": "Deposited by cashier: deepak"
-        },
-        {
-            "type": "TRANSFER SENT",
-            "amount": 57.0,
-            "date": "20-Oct-2025 10:48:59",
-            "remark": "To khushbo (9e1c17a6)"
-        },
-        {
-            "type": "DEPOSIT",
-            "amount": 15000.0,
-            "date": "20-Oct-2025 10:51:52",
-            "remark": "Deposited by cashier: deepak"
-        },
-        {
-            "type": "DEPOSIT",
-            "amount": 147.0,
-            "date": "20-Oct-2025 14:54:29",
-            "remark": "Deposited by cashier: vaibhav"
-        },
-        {
-            "type": "DEPOSIT",
-            "amount": 69.0,
-            "date": "20-Oct-2025 15:03:51",
-            "remark": "Deposited by cashier: vaibhav"
-        },
-        {
-            "type": "TRANSFER SENT",
-            "amount": 216.0,
-            "date": "20-Oct-2025 16:27:38",
-            "remark": "To sunny (51e058f8)"
-        },
-        {
-            "type": "TRANSFER RECEIVED",
-            "amount": 15000.0,
-            "date": "20-Oct-2025 17:18:37",
-            "remark": "From yuvii (cfaa3d30)"
-        },
-        {
-            "type": "DEPOSIT",
-            "amount": 78554.0,
-            "date": "20-Oct-2025 19:23:06",
-            "remark": "Deposited by cashier: vaibhav"
+            "type": "UPI-Recived",
+            "amount": 1.0,
+            "date": "25-Oct-2025 19:57:17",
+            "remark": "Recived Through : UPI"
         }
     ],
-    "51e058f8": [
+    "e8536ad1": [
         {
             "type": "DEPOSIT",
-            "amount": 1000,
-            "date": "18-Oct-2025 12:56:33",
+            "amount": 99999.0,
+            "date": "23-Oct-2025 19:03:56",
             "remark": "Account Opening Amount"
         },
         {
             "type": "TRANSFER RECEIVED",
-            "amount": 216.0,
-            "date": "20-Oct-2025 16:27:38",
-            "remark": "From ajay (eaa99349)"
+            "amount": 111.0,
+            "date": "25-Oct-2025 18:55:30",
+            "remark": "From ajay (5cb2c4aa)"
         },
         {
-            "type": "TRANSFER SENT",
-            "amount": 12.0,
-            "date": "22-Oct-2025 18:02:06",
-            "remark": "To vaani (7bc4745a)"
+            "type": "UPI-Recived",
+            "amount": 1.0,
+            "date": "25-Oct-2025 19:58:43",
+            "remark": "Recived Through : UPI"
         }
     ],
-    "7bc4745a": [
+    "d58c1972": [
         {
             "type": "DEPOSIT",
-            "amount": 7859.0,
-            "date": "19-Oct-2025 22:33:22",
+            "amount": 67890.0,
+            "date": "23-Oct-2025 19:05:11",
             "remark": "Account Opening Amount"
         },
         {
-            "type": "TRANSFER RECEIVED",
-            "amount": 12.0,
-            "date": "22-Oct-2025 18:02:06",
-            "remark": "From sunny (51e058f8)"
+            "type": "UPI-Recived",
+            "amount": 1.0,
+            "date": "25-Oct-2025 20:00:49",
+            "remark": "Recived Through : UPI"
         }
     ],
-    "02034b80": [
-        {
-            "type": "DEPOSIT",
-            "amount": 70.0,
-            "date": "20-Oct-2025 14:07:56",
-            "remark": "Account Opening Amount"
-        }
-    ],
-    "cfaa3d30": [
+    "5e06ae93": [
         {
             "type": "DEPOSIT",
             "amount": 22222.0,
-            "date": "20-Oct-2025 17:01:16",
+            "date": "23-Oct-2025 19:06:36",
             "remark": "Account Opening Amount"
         },
         {
-            "type": "WITHDRAWAL",
-            "amount": 69.0,
-            "date": "20-Oct-2025 17:04:07",
-            "remark": "Withdrawn by cashier: deepak"
-        },
-        {
-            "type": "WITHDRAWAL",
-            "amount": 3.0,
-            "date": "20-Oct-2025 17:05:30",
-            "remark": "Withdrawn by cashier: deepak"
-        },
-        {
-            "type": "TRANSFER SENT",
-            "amount": 15000.0,
-            "date": "20-Oct-2025 17:18:37",
-            "remark": "To ajay (eaa99349)"
-        }
-    ],
-    "4171bc2a": [
-        {
-            "type": "DEPOSIT",
-            "amount": 150.0,
-            "date": "20-Oct-2025 18:51:05",
-            "remark": "Account Opening Amount"
-        }
-    ],
-    "a8254367": [
-        {
-            "type": "DEPOSIT",
-            "amount": 1400.0,
-            "date": "22-Oct-2025 18:04:37",
-            "remark": "Account Opening Amount"
+            "type": "UPI-Recived",
+            "amount": 1.0,
+            "date": "25-Oct-2025 20:07:22",
+            "remark": "Recived Through : UPI"
         }
     ]
 }

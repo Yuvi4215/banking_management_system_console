@@ -10,6 +10,7 @@ from core.utils.console_utils import (
 from core.utils.table_utils import create_table
 from core.services.transaction_service import TransactionService
 from core.services.account_service import AccountService
+from core.services.upi_service import display_qrcode
 
 
 class CustomerRole:
@@ -29,7 +30,8 @@ class CustomerRole:
         print_content("1️⃣  View Account Details", "content")
         print_content("2️⃣  Transfer Money", "content")
         print_content("3️⃣  View Transaction History", "content")
-        print_content("4️⃣  Logout", "content")
+        print_content("4️⃣  Recive money Through UPI", "content")
+        print_content("0️⃣  Logout", "content")
 
     def start(self):
         """Main customer interaction loop"""
@@ -50,6 +52,10 @@ class CustomerRole:
                 self.view_transaction_history(self.encrypted_id)
                 get_input("Press Enter", False, 0.95)
             elif choice == "4":
+                clear_screen()
+                self.recive_money_through_upi(self.encrypted_id)
+                get_input("Press Enter", False, 0.95)
+            elif choice == "0":
                 print_content("Logging out","LOGOUT",0.90)
                 flag = False
                 get_input("Press Enter", False, 0.95)
@@ -104,6 +110,30 @@ class CustomerRole:
             return
 
         create_table(headers, transactions, "All Transactions", 70, 50)
+    
+    def recive_money_through_upi(self,encrypted_id):
+        print_header("💸 Recive Money Through UPI")
+        amount = get_input("Enter Amount ")
+        
+        try:
+            amount = float(amount)
+            if amount>0:
+                display_qrcode(amount)
+                recive = get_input("Transaction Done? (y/n): ")
+                if recive.lower() in ("y","yes"):
+                    result = self.transaction_service.recive_upi_money(encrypted_id,amount)
+                    if result:
+                        print_content(result, "SUCCESS")
+                else:
+                    print_content("Transaction Failled.","ERROR")
+            else:
+                print_content(" Deposit amount must be greater than 0.","WARNING")
+        except ValueError:
+            print_content("Invalid amount entered.", "ERROR")
+        except Exception as e:
+            print_content(f"{e}", "WARNING")
+            
+
 
 
 if __name__ == "__main__":

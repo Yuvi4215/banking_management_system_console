@@ -1,58 +1,34 @@
 {
-    "eaa99349": {
+    "5cb2c4aa": {
         "username": "ajay",
         "full_name": "Ajay Varma",
-        "email": "ajay@example.com",
-        "phone": "+91-9999999999",
-        "address": "123 MG Road, Bangalore",
-        "account_no": 8187047
+        "email": "ajay@gmail.com",
+        "phone": "7777777777",
+        "address": "Gurugram",
+        "account_no": 4782595
     },
-    "51e058f8": {
+    "e8536ad1": {
+        "username": "vaani",
+        "full_name": "Vaani Katiyar",
+        "email": "vaani@gmail.com",
+        "phone": "8888888888",
+        "address": "Solapur",
+        "account_no": 7271700
+    },
+    "d58c1972": {
         "username": "sunny",
         "full_name": "Sunny Varma",
-        "email": "sunny@example.com",
-        "phone": "+91-9988776655",
-        "address": "5 Fc Road, Pune",
-        "account_no": 2003963
+        "email": "sunny@gmail.com",
+        "phone": "7878787878",
+        "address": "Sultanpur",
+        "account_no": 7538302
     },
-    "7bc4745a": {
-        "username": "vaani",
-        "full_name": "vaani katiyar",
-        "email": "vaani@gmail.com",
-        "phone": "4587458756",
-        "address": "kanpur",
-        "account_no": 6134004
-    },
-    "02034b80": {
-        "username": "user123",
-        "full_name": "User name",
-        "email": "user@name.com",
-        "phone": "7854785478",
-        "address": "user, Name",
-        "account_no": 6615602
-    },
-    "cfaa3d30": {
-        "username": "yuvii",
-        "full_name": "U V",
-        "email": "uv@gmail.com",
-        "phone": "7979797979",
-        "address": "Solapur, MAHA",
-        "account_no": 2097012
-    },
-    "4171bc2a": {
-        "username": "usern",
-        "full_name": "username is use",
-        "email": "username@gmail.",
-        "phone": "9988776655",
-        "address": "address is",
-        "account_no": 5393268
-    },
-    "a8254367": {
-        "username": "varma",
-        "full_name": "varma",
-        "email": "@gmail.com",
-        "phone": "1111111111",
-        "address": "solapur, maharashtra",
-        "account_no": 5973177
+    "5e06ae93": {
+        "username": "yuvi",
+        "full_name": "Yuvraj Varma",
+        "email": "yuvi@gmail.com",
+        "phone": "7979797797",
+        "address": "Pune",
+        "account_no": 7672062
     }
 }

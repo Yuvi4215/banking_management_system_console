@@ -1,4 +1,3 @@
-# from core.authentication.encryption_manager import EncryptionManager
 from core.database.file_manager import FileManager
 from core.services.account_service import AccountService
 from core.utils.console_utils import (
@@ -8,7 +7,7 @@ from core.utils.console_utils import (
     get_input,
     get_password
 )
-from core.models.cashier_model import Customer
+from core.models.customer_model import Customer
 
 
 class LoginManager:
