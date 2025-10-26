@@ -64,7 +64,31 @@ def get_customer_instructions():
                                                 • Helps you keep track of your spending and deposits with a clear, timestamped history.
 
                                                 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-                                                🚪 4️⃣ LOGOUT
+                                                🧾 4️⃣ RECEIVE MONEY THROUGH UPI
+                                                ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+                                                • This feature allows you to **receive funds instantly via UPI** within your banking system.
+
+                                                • You will be asked to:
+                                                    - Enter the amount you expect to receive.
+                                                    - A unique **QR Code** will be generated for the transaction.
+                                                    - The sender can scan this QR code to complete payment.
+
+                                                • Once the sender confirms payment:
+                                                    - Do confirm Transaction done/failed.
+                                                    - Your account balance is updated automatically.
+                                                    - A success message will confirm the credit to your account.
+                                                    - The transaction is recorded in your log with a timestamp.
+
+                                                ⚠️ If the transaction fails or is canceled:
+                                                - No money will be credited.
+
+                                                💡 Tips for UPI Transactions:
+                                                - Ensure stable internet connection.
+                                                - Verify the QR code matches your account before sharing.
+                                                - Always confirm transaction success before closing the screen.
+
+                                                ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+                                                🚪 5️⃣ LOGOUT
                                                 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
                                                 • Securely exit your customer session.
                                                 • Recommended after completing transactions to prevent unauthorized access.
