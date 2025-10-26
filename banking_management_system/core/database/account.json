@@ -4,7 +4,7 @@
         "password": "pass1",
         "role": "CUSTOMER",
         "account_no": 4782595,
-        "balance": 78790.0
+        "balance": 78990.0
     },
     "e8536ad1": {
         "username": "vaani",
@@ -18,7 +18,7 @@
         "password": "pass3",
         "role": "CUSTOMER",
         "account_no": 7538302,
-        "balance": 67891.0
+        "balance": 68081.0
     },
     "5e06ae93": {
         "username": "yuvi",

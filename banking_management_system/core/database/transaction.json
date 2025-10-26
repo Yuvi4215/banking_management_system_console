@@ -17,6 +17,18 @@
             "amount": 1.0,
             "date": "25-Oct-2025 19:57:17",
             "remark": "Recived Through : UPI"
+        },
+        {
+            "type": "UPI-Recived",
+            "amount": 1400.0,
+            "date": "26-Oct-2025 15:06:23",
+            "remark": "Recived Through : UPI"
+        },
+        {
+            "type": "TRANSFER SENT",
+            "amount": 1200.0,
+            "date": "26-Oct-2025 15:07:39",
+            "remark": "To sunny (d58c1972)"
         }
     ],
     "e8536ad1": [
@@ -51,6 +63,24 @@
             "amount": 1.0,
             "date": "25-Oct-2025 20:00:49",
             "remark": "Recived Through : UPI"
+        },
+        {
+            "type": "TRANSFER RECEIVED",
+            "amount": 1200.0,
+            "date": "26-Oct-2025 15:07:39",
+            "remark": "From ajay (5cb2c4aa)"
+        },
+        {
+            "type": "DEPOSIT",
+            "amount": 101.0,
+            "date": "26-Oct-2025 15:08:16",
+            "remark": "Deposited by cashier: deepak"
+        },
+        {
+            "type": "WITHDRAWAL",
+            "amount": 1111.0,
+            "date": "26-Oct-2025 15:08:29",
+            "remark": "Withdrawn by cashier: deepak"
         }
     ],
     "5e06ae93": [
